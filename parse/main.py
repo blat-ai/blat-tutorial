@@ -13,18 +13,20 @@ def get_content(path: Path = Path("./get_blat/documents/content.html")):
     else:
         raise FileNotFoundError(f"{path=}")
 
+
 if __name__ == "__main__":
     BLAT_API_KEY = os.getenv("BLAT_API_KEY")
+    # HARVESTER_ID = "books-toscrape-com-c0d3c582"
+    HARVESTER_ID = "shop-google-com-109a0fdf"
     try:
+        content_file = Path(f"./parse/documents/content-{HARVESTER_ID}.html")
         response = requests.post(
             "https://api.blat.ai/harvest",
             headers={"X-API-KEY": BLAT_API_KEY},
             json={
-                "id": "books-toscrape-com-c0d3c582",
+                "id": HARVESTER_ID,
                 "mode": "parse",
-                "params": {
-                    "content": get_content(Path("./parse/documents/content.html"))
-                }
+                "params": {"content": get_content(content_file)},
             },
         )
         response.raise_for_status()
