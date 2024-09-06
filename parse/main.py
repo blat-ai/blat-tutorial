@@ -1,3 +1,4 @@
+import json
 import os
 from pathlib import Path
 import requests
@@ -30,6 +31,6 @@ if __name__ == "__main__":
             },
         )
         response.raise_for_status()
-        print(response.json())
+        print(json.dumps(response.json(), indent=4))
     except requests.exceptions.HTTPError as err:
         print(f"{err}")
