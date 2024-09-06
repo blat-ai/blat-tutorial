@@ -18,7 +18,8 @@ def get_content(path: Path = Path("./get_blat/documents/content.html")):
 if __name__ == "__main__":
     BLAT_API_KEY = os.getenv("BLAT_API_KEY")
     # HARVESTER_ID = "books-toscrape-com-c0d3c582"
-    HARVESTER_ID = "shop-google-com-109a0fdf"
+    # HARVESTER_ID = "shop-google-com-109a0fdf"
+    HARVESTER_ID = "shop-sponsored-google-com-7c3bde33"
     try:
         content_file = Path(f"./parse/documents/content-{HARVESTER_ID}.html")
         response = requests.post(
